@@ -6,7 +6,7 @@ def JPG_to_PNG_converter(source_folder_path, dest_folder_path):
     # check if source folder is present and is, in fact, a folder
     if not source_folder_path.exists():
         raise FileNotFoundError(f"Source folder {source_folder_path}/ not found")
-    if not source_folder_path.is_dir():
+    elif not source_folder_path.is_dir():
         raise TypeError(f"{source_folder_path} is a file, expected folder")
     else:
         image_paths = [file for file in source_folder_path.glob("*.jpg")]
