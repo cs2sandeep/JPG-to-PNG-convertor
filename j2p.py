@@ -10,13 +10,15 @@ def JPG_to_PNG_converter(source_folder_path, dest_folder_path):
         raise TypeError(f"{source_folder_path} is a file, expected folder")
     else:
         image_paths = [file for file in source_folder_path.glob("*.jpg")]
-
-    # check if destination folder exists, if not create it
+        
+    # if no jpg files in source folder, skip creating destination folder and return
     if len(image_paths) == 0:
         print("No .jpg files found to process")
         return
-    dest_folder_path.mkdir(exist_ok=True)
 
+    # check if destination folder exists, if not create it
+    dest_folder_path.mkdir(exist_ok=True)
+     
     # loop through source folder and convert jpg to png, then save them to the destination folder
     for image_path in image_paths:
         im = Image.open(image_path)
